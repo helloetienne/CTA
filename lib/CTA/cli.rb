@@ -1,6 +1,5 @@
 class CTA::CLI
 
-    @@list = []
     attr_accessor :user_input
 
     def call
@@ -18,22 +17,26 @@ A list of stations is below. To exit, type "exit".'
     end
 
     def stations_list
-        CTA::Stations.all.each do |station|
-            @@list << station.station_name
+        CTA::Stations.all.collect do |station|
+           p station.station_name
         end
-        puts @@list.sort.uniq
+       
     end
 
     def get_input
+       
         puts "Enter a station name:"
         @user_input = gets.strip.capitalize
         validate_input
     end
 
     def validate_input
-        while @user_input != "Exit" && !@@list.include?(@user_input)
+        #binding.pry
+        while @user_input != "Exit" && !stations_list.include?(@user_input)
+
             puts "That is not a valid station name. Please try again!"
-            @user_input == nil
+            @user_input = nil
+           
             get_input
         end
 
