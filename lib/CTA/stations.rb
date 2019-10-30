@@ -4,7 +4,7 @@ class CTA::Stations
     @@all = []
 
     def initialize(station_name, ada)
-        @station_name = station_name
+        @station_name = station_name.capitalize
         @ada = ada
         @@all << self
     end

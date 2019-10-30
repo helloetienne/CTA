@@ -9,7 +9,7 @@ class CTA::CLI
             greeting
             stations_list
             get_input
-            validate_input
+            thank_you
         #end
     end
 
@@ -29,13 +29,10 @@ A list of stations is below. To exit, type "exit".'
     def get_input
         puts "Enter a station name:"
         @user_input = gets.strip.capitalize
+        validate_input
     end
 
     def validate_input
-        # if @user_input == "Exit"
-        #     puts "Thank you for riding the CTA!"
-        #     exit!
-        # end
         while @user_input != "Exit" && !@@list.include?(@user_input)
                 puts "That is not a valid station name. Please try again!"
                 @user_input == nil
@@ -45,7 +42,6 @@ A list of stations is below. To exit, type "exit".'
     end 
 
     def answer
-    
         CTA::Stations.all.each do |station|
             if station.station_name == @user_input && station.ada == false
                 puts "This station is not accessible."
@@ -56,12 +52,11 @@ A list of stations is below. To exit, type "exit".'
             end
            
         end  
-        # stations_list
-        # get_input      
+         
     end 
 
-    # def quit
-    #     puts "Thank you for riding the CTA!"
-    # end
+    def thank_you
+        puts "Thank you for riding the CTA!"
+    end
 
 end
