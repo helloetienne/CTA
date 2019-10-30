@@ -5,12 +5,10 @@ class CTA::CLI
 
     def call
         CTA::API.new.fetch
-        #CTA::Stations.all.each do |station|
-            greeting
-            stations_list
-            get_input
-            thank_you
-        #end
+        greeting
+        stations_list
+        get_input
+        thank_you
     end
 
     def greeting
@@ -34,10 +32,11 @@ A list of stations is below. To exit, type "exit".'
 
     def validate_input
         while @user_input != "Exit" && !@@list.include?(@user_input)
-                puts "That is not a valid station name. Please try again!"
-                @user_input == nil
-                get_input
+            puts "That is not a valid station name. Please try again!"
+            @user_input == nil
+            get_input
         end
+
         answer
     end 
 
