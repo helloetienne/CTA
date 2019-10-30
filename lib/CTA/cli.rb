@@ -4,7 +4,7 @@ class CTA::CLI
         CTA::API.new.fetch
         #CTA::Stations.all.each do |station|
             greeting
-            # stations_list
+            stations_list
             # get_input
             # validate_input
         #end
@@ -16,9 +16,14 @@ to find out whether it is ADA accessible.
 A list of stations is below. To exit, type "exit".'
     end
 
-    # def stations_list
-    #     p Stations.all.station_name
-    # end
+    def stations_list
+        list = []
+         CTA::Stations.all.each do |station|
+            list << station.station_name
+            #binding.pry
+        end
+        puts list.sort.uniq
+    end
 
     # def get_input
     #     user_input = gets.chomp.capitalize
