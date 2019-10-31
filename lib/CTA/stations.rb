@@ -25,7 +25,7 @@ class CTA::Stations
             red << station.station_name
         end
         end
-        red
+        red.uniq
     end
 
     def self.blue
@@ -35,7 +35,7 @@ class CTA::Stations
             blue << station.station_name
         end
         end
-        blue
+        blue.uniq
     end
 
 
