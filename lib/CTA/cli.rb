@@ -5,21 +5,25 @@ class CTA::CLI
     def call
         CTA::API.new.fetch
         greeting
+        trains_list
         stations_list
         get_input
         thank_you
     end
 
     def greeting
-        puts 'Hello! Please enter the name of a CTA Blue Line station
-to find out whether it is ADA accessible.
-A list of stations is below. To exit, type "exit".'
+        puts 'Hello! Please enter the name of any CTA Station
+to find out whether it is ADA accessible. First, enter a train. A list of trains is below:'
+    end
+
+    def trains_list
+        p "Red  Blue  Green  Brown  Pink  Orange  Purple  Yellow"
+        binding.pry
     end
 
     def stations_list
         CTA::Stations.all.collect do |station|
            p station.station_name
-          
         end
         
     end
