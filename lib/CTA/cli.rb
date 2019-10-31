@@ -19,8 +19,9 @@ A list of stations is below. To exit, type "exit".'
     def stations_list
         CTA::Stations.all.collect do |station|
            p station.station_name
+          
         end
-       
+        
     end
 
     def get_input
