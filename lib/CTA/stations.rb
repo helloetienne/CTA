@@ -22,7 +22,7 @@ class CTA::Stations
         red = []
         self.all.each do |station|
         if station.station_descriptive_name.include?("Red")
-            red << station
+            red << station.station_name
         end
         end
         red
@@ -32,7 +32,7 @@ class CTA::Stations
         blue = []
         self.all.each do |station|
         if station.station_descriptive_name.include?("Blue")
-            blue << station
+            blue << station.station_name
         end
         end
         blue

@@ -7,8 +7,8 @@ class CTA::CLI
         greeting
         trains_list
         get_input
-        stations_list
-        thank_you
+        choose_train
+       # thank_you
     end
 
     def greeting
@@ -18,43 +18,34 @@ to find out whether it is ADA accessible.'
 
     def trains_list
         puts "Choose a train:"
-       
-        binding.pry
+        p "Red  ---  Blue"
     end
 
-    # def get_input
-    #     @user_input = gets.strip.capitalize
-    # end 
-    
+    def get_input
+        @user_input = gets.strip.capitalize
+    end 
    
-    # def validate_input
-    #     #binding.pry
-    #     while @user_input != "Exit" && !stations_list.include?(@user_input)
+    def choose_train
+        if  @user_input == "Red"
+            p CTA::Stations.red
+            choose_station
+           elsif @user_input == "Blue"
+            p CTA::Stations.blue
+            choose_station
+           elsif @user_input == "Exit"
+               thank_you
+           else puts "Invalid option. Please try again"
+           trains_list
+           get_input
+        end
+    end 
 
-    #         puts "That is not a valid station name. Please try again!"
-    #         @user_input = nil
-           
-    #         get_input
-    #     end
-
-    #     answer
-    # end 
-
-    # def stations_list
-    #     CTA::Stations.all.collect do |station|
-    #         binding.pry
-    #     #    if station.station_name
-    #     #    end
-    #     end
-        
-    # end
-
-    # def get_input
-       
-    #     puts "Enter a station name:"
-    #     @user_input = gets.strip.capitalize
-    #     validate_input
-    # end 
+    def choose_station
+        CTA::Stations.all.collect do |station|
+            binding.pry
+        #    if station.station_name
+        #    end
+    end
 
     # def answer
     #     CTA::Stations.all.each do |station|
